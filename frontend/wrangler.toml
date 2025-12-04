@@ -1,0 +1,6 @@
+name = "contract-summarizer"
+compatibility_date = "2025-04-03"
+main = "workers/index.js"
+
+[vars]
+GEMINI_API_KEY = "AIzaSyCRFP-in0tYrgqi4yC17CGSQ9KBij2sLvQ"
