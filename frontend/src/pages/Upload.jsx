@@ -1,34 +1,33 @@
-import { useState } from "react";
-import axios from "axios";
+import { useState } from 'react';
+import axios from 'axios';
 
 function Upload() {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
-  
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
-
-    // validation
+    
+    // validations
     if (selectedFile && selectedFile.type !== 'application/pdf') {
       setError('Only PDF files are allowed');
       return;
     }
-
+    
     if (selectedFile && selectedFile.size > 5 * 1024 * 1024) {
       setError('File size must be less than 5MB');
       return;
     }
-
+    
     setFile(selectedFile);
     setError(null);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
     if (!file) {
       setError('Please select a file');
       return;
@@ -38,7 +37,7 @@ function Upload() {
     setError(null);
 
     try {
-      const formData = new formData();
+      const formData = new FormData();
       formData.append('contract', file);
 
       const response = await axios.post('/api/analyze', formData, {
@@ -46,10 +45,10 @@ function Upload() {
           'Content-Type': 'multipart/form-data',
         },
       });
-      
+
       setResult(response.data);
       console.log('Success:', response.data);
-    
+
     } catch (err) {
       setError(err.response?.data?.error || 'Upload failed');
       console.error('Error:', err);
