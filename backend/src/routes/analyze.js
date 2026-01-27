@@ -42,7 +42,7 @@ router.post('/analyze', upload.single('contract'), async (req, res) => {
     // return analysis
     res.json({
       success: true,
-      analysisId: saveAnalysis.id,
+      analysisId: savedAnalysis.id,
       analysis: analysis,
       metadata: {
         fileName: file.originalname,
