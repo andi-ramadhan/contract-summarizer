@@ -40,7 +40,7 @@ function Results() {
         <div className="bg-white p-6 rounded-lg shadow max-w-md">
           <h2 className="text-xl font-bold text-red-600 mb-2">Error</h2>
           <p className="text-gray-600 mb-4">{error}</p>
-          <Link to="/" className="text-blue-600 hover:underline">
+          <Link to="/upload" className="text-blue-600 hover:underline">
             ← Back to Upload
           </Link>
         </div>
@@ -60,7 +60,7 @@ function Results() {
 
         {/* header */}
         <div className="mb-6">
-          <Link to="/" className="text-blue-600 hover:underline mb-4 inline-block">
+          <Link to="/upload" className="text-blue-600 hover:underline mb-4 inline-block">
             ← Analyze Another Contract
           </Link>
           <h1 className="text-3xl font-bold text-gray-900">
